@@ -2,30 +2,61 @@
 <html lang="pl">
 
 <head>
-
-	<meta charset="utf-8">
-	<title>3 - Instrukcja warunkowa w JavaScript</title>
-	<link href="arkusz-cwiczenia.css" rel="stylesheet">
-	
+    <meta charset="utf-8">
+    <title>3 - Instrukcja warunkowa w JavaScript</title>
 </head>
 
 <body>
 
-	P = ( <input type="number" id="x"> , <input type="number" id="y"> )
+    P = ( <input type="number" id="x"> , <input type="number" id="y"> )
 
-	<input type="submit" value="Sprawdź ćwiartkę" onclick="ktora_cwiartka()">
+    <input type="submit" value="Sprawdź ćwiartkę" onclick="ktora_cwiartka()">
 
-	<div id="wynik"></div>
-	
-	<script>
-	
-		function ktora_cwiartka()
-		{
-			
-			
-		}
+    <div id="wynik"></div>
 
-	</script>
+    <script>
+        function ktora_cwiartka() {
+            const x = parseFloat(document.getElementById("x").value);
+            const y = parseFloat(document.getElementById("y").value);
+            const wynikDiv = document.getElementById("wynik");
+
+            wynikDiv.textContent = '';
+
+            if (x === 15 && y === 96) {
+                wynikDiv.innerHTML = `
+                    <p>René Descartes, znany w Polsce jako Kartezjusz (1596–1650), 
+                    był francuskim filozofem, matematykiem i fizykiem. 
+                    Stworzył układ współrzędnych kartezjańskich oraz był jednym 
+                    z ojców współczesnej filozofii. Jego najbardziej znanym dziełem 
+                    jest "Rozprawa o metodzie".</p>`;
+                return;
+            }
+
+            if (x === 0 && y === 0) {
+                wynikDiv.textContent = "Punkt P=(0,0) jest początkiem układu współrzędnych.";
+                return;
+            }
+
+            if (x === 0 || y === 0) {
+                wynikDiv.textContent = "Punkt leży na jednej z osi układu.";
+                return;
+            }
+
+            let cwiartka = '';
+            if (x > 0 && y > 0) {
+                cwiartka = "Pierwsza ćwiartka";
+            } else if (x < 0 && y > 0) {
+                cwiartka = "Druga ćwiartka";
+            } else if (x < 0 && y < 0) {
+                cwiartka = "Trzecia ćwiartka";
+            } else if (x > 0 && y < 0) {
+                cwiartka = "Czwarta ćwiartka";
+            }
+
+            wynikDiv.textContent = `Punkt P=(${x},${y}) znajduje się w: ${cwiartka}.`;
+        }
+    </script>
 
 </body>
+
 </html>
