@@ -2,32 +2,84 @@
 <html lang="pl">
 
 <head>
+    <meta charset="utf-8">
+    <title>1 - Instrukcja warunkowa w JavaScript</title>
+    <style>
+        .yellow {
+            color: yellow;
+        }
 
-	<meta charset="utf-8">
-	<title>1 - Instrukcja warunkowa w JavaScript</title>
-	<link href="arkusz-cwiczenia.css" rel="stylesheet">
-	
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
 
-	<label>
-		Podaj numer dnia tygodnia: <input type="number">
-	</label>
-	
-	<input type="submit" value="Zobacz nazwę dnia" onclick="getDayName()">
+    <label>
+        Podaj numer dnia tygodnia: <input type="number" id="dzien" min="1" max="7">
+    </label>
 
-	<div id="wynik"></div>
-	
-	<script>
-	
-		function getDayName()
-		{
-					
-			
-		}
+    <input type="submit" value="Zobacz nazwę dnia" onclick="getDayName()">
 
-	</script>
+    <div id="wynik"></div>
+
+    <script>
+        function getDayName() {
+            const dzien = parseInt(document.getElementById("dzien").value); 
+            const wynikDiv = document.getElementById("wynik");
+
+         
+            wynikDiv.textContent = '';
+            wynikDiv.className = '';
+
+            let wynik = '';
+            let kolor = '';
+
+           
+            switch (dzien) {
+                case 1:
+                    wynik = "Pierwszy dzień tygodnia to Monday - poniedziałek";
+                    break;
+                case 2:
+                    wynik = "Drugi dzień tygodnia to Tuesday - wtorek";
+                    break;
+                case 3:
+                    wynik = "Trzeci dzień tygodnia to Wednesday - środa";
+                    break;
+                case 4:
+                    wynik = "Czwarty dzień tygodnia to Thursday - czwartek";
+                    break;
+                case 5:
+                    wynik = "Piąty dzień tygodnia to Friday - piątek, piąteczek, piątunio";
+                    kolor = 'yellow';
+                    break;
+                case 6:
+                    wynik = "Szósty dzień tygodnia to Saturday - sobota";
+                    kolor = 'green';
+                    break;
+                case 7:
+                    wynik = "Siódmy dzień tygodnia to Sunday - niedziela";
+                    kolor = 'green';
+                    break;
+                default:
+                    wynik = "To nie jest prawidłowy numer dnia tygodnia!";
+                    kolor = 'red';
+            }
+
+         
+            wynikDiv.textContent = wynik;
+            if (kolor) {
+                wynikDiv.classList.add(kolor);
+            }
+        }
+    </script>
 
 </body>
+
 </html>
